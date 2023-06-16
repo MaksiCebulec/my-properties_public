@@ -2,9 +2,8 @@ import React, { Fragment, useState } from "react";
 import './pagination.styles.scss';
 
 
-const Pagination = ({ getProperties, totalPages }) => {
+const Pagination = ({ getProperties, totalPages, currentPage, setCurrentPage }) => {
 
-    const [currentPage, setCurrentPage] = useState(1);
 
     const pages = Array.from({ length: totalPages }, (_, index) => index + 1);
     function nextPage() {

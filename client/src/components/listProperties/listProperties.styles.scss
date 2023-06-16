@@ -24,3 +24,18 @@
         }
     }
 }
+
+
+.limit-chooser {
+    display: inline-block;
+    margin-bottom: 10px;
+
+    label {
+        margin-right: 10px;
+    }
+
+    select {
+        padding: 5px;
+        border-radius: 4px;
+    }
+}

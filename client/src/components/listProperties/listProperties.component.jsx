@@ -9,14 +9,20 @@ const ListProperties = () => {
 
     const [properties, setProperties] = useState(null);
     const [totalPages, setTotalPages] = useState();
-
-    const getProperties = async (page = 1) => {
+    const [currentPage, setCurrentPage] = useState(1);
+    const [currentLimit, setCurrentLimit] = useState(5);
+    const [allProperties, setAllProperties] = useState();
+    const getProperties = async (page = 1, limit = currentLimit) => {
         try {
-            const response = await fetch(`http://localhost:5000/pagination?page=${page}`);
+
+            console.log("page:", page);
+            console.log("limit", limit);
+            const response = await fetch(`http://localhost:5000/pagination?page=${page}&limit=${currentLimit}`);
             console.log();
             const responseJSON = await response.json();
             setProperties(responseJSON.data);
-            setTotalPages(responseJSON.pagination.totalPages)
+            setAllProperties(responseJSON.pagination.count);
+            setTotalPages(responseJSON.pagination.totalPages);
             console.log(totalPages);
 
         } catch (error) {
@@ -28,11 +34,33 @@ const ListProperties = () => {
         getProperties();
     }, []);
 
+    useEffect(() => {
+        getProperties(undefined, currentLimit);
+    }, [currentLimit]);
+
+
+    function limitChange(e) {
+        const newLimit = e.target.value;
+        setCurrentLimit(newLimit);
+
+        getProperties(undefined, newLimit);
+
+    }
 
 
     return (
         <Fragment>
             <h1>My Properties</h1>
+
+            <div className="limit-chooser">
+                <label htmlFor="limit-select">Items per page:</label>
+                <select id="limit-select" onChange={limitChange}>
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                </select>
+            </div>
+
 
             <section className="properties">
                 {properties === null ? (
@@ -44,7 +72,7 @@ const ListProperties = () => {
                 )}
             </section>
             <footer>
-                <Pagination getProperties={getProperties} totalPages={totalPages} />
+                <Pagination getProperties={getProperties} totalPages={totalPages} currentPage={currentPage} setCurrentPage={setCurrentPage} />
             </footer>
         </Fragment>
 
