@@ -1,19 +1,23 @@
 import React, { Fragment, useEffect, useState } from "react";
 import './listProperties.styles.scss';
 import Property from "../property/property.component";
+import Pagination from "../pagination/pagination.component";
 
 
 
 const ListProperties = () => {
 
     const [properties, setProperties] = useState(null);
+    const [totalPages, setTotalPages] = useState();
 
-
-    const getProperties = async () => {
+    const getProperties = async (page = 1) => {
         try {
-            const response = await fetch('http://localhost:5000/properties');
+            const response = await fetch(`http://localhost:5000/pagination?page=${page}`);
+            console.log();
             const responseJSON = await response.json();
-            setProperties(responseJSON);
+            setProperties(responseJSON.data);
+            setTotalPages(responseJSON.pagination.totalPages)
+            console.log(totalPages);
 
         } catch (error) {
             console.log(error.message);
@@ -39,6 +43,9 @@ const ListProperties = () => {
                     ))
                 )}
             </section>
+            <footer>
+                <Pagination getProperties={getProperties} totalPages={totalPages} />
+            </footer>
         </Fragment>
 
     );
