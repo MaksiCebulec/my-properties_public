@@ -13,8 +13,16 @@ app.use(express.json());
 //get all properties
 app.get("/properties", async (req, res) => {
     try {
-        const properties = await pool.query("SELECT * FROM properties");
-        res.json(properties.rows);
+        const queryResult = await pool.query("SELECT * FROM properties");
+        const properties = queryResult.rows;
+
+        const filteredProperties = properties.map((property) => {
+            return {
+                ...property,
+                photos: property.photos.filter((photo) => photo !== "https://www.sreality.cz/img/camera.svg")
+            };
+        });
+        res.json(filteredProperties);
     } catch (err) {
         console.log(err.message);
     }

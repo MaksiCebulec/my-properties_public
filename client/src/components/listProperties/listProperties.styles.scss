@@ -1,0 +1,26 @@
+.properties {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 10px;
+    // grid-auto-flow: column;
+
+    .property {
+        margin: 20px 0;
+
+        .text {
+            .title {
+                margin: 5px;
+            }
+
+            .location {
+                margin: 5px;
+            }
+        }
+
+        .photos {
+            img {
+                height: 250px;
+            }
+        }
+    }
+}
