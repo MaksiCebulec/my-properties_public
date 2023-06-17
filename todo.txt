@@ -1,0 +1,6 @@
+sometimes new items added to prelast page not last
+when just one page it shows 1 page 2-times in pagination
+refresh goes back to first page (session storage)
+scraper checks if same data is already there - no same properties in the database
+put code into functions, index - server, ...
+offset must no be negative

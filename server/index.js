@@ -37,11 +37,10 @@ app.get("/properties", async (req, res) => {
 
         const offset = (page - 1) * limit;
         const queryResult = await pool.query("SELECT * FROM properties LIMIT $1 OFFSET $2", [limit, offset]);
-
         const properties = queryResult.rows;
 
         //deletes svg
-        const filteredProperties = properties.map((property) => {
+        const filteredProperties = properties.map((property) => { //filters, so is not the svg image of camera
             return {
                 ...property,
                 photos: property.photos.filter((photo) => photo !== "https://www.sreality.cz/img/camera.svg")
@@ -56,6 +55,14 @@ app.get("/properties", async (req, res) => {
         const totalPages = Math.ceil(rows[0].count / limit);
         console.log(filteredProperties);
 
+        // if (page > totalPages) {
+        //     // Redirect the user to the new last page
+        //     res.redirect(`/properties?page=${totalPages}`);
+        // } else {
+        //     // Render the properties on the current page
+        //     res.render('properties', { properties, totalPages });
+        // }
+
         res.json({
             data: filteredProperties,
             pagination: {
@@ -67,6 +74,7 @@ app.get("/properties", async (req, res) => {
         });
     } catch (err) {
         console.log(err.message);
+        res.status(500).json({ message: 'Server error' });
     }
 });
 
@@ -74,5 +82,5 @@ app.get("/properties", async (req, res) => {
 
 
 app.listen(5000, () => {
-    console.log("Server has stated (port 5000).");
+    console.log("Server has started (port 5000).");
 });
