@@ -7,16 +7,24 @@ const Pagination = ({ getProperties, totalPages }) => {
     const [currentPage, setCurrentPage] = useState(1);
 
 
-    // function getPageRange() {
-    //     const minPage = currentPage - 5;
+    function getPageRange() {
+        const minPage = Math.max(currentPage - 2, 1);
+        const maxPage = Math.min(currentPage + 2, totalPages);
 
-    //     if(minPage<1){
+        // return Array.from({ length: maxPage - minPage + 1 }, (_, index) => minPage + index);
 
-    //     }
-    //     const maxPage = currentPage + 5;
-    // }
+        const pages = [];
 
-    const pages = Array.from({ length: totalPages }, (_, index) => index + 1);
+        for (let i = minPage; i <= maxPage; i++) {
+            if (i !== 1 && i !== totalPages) {
+                pages.push(i);
+            }
+        }
+
+        return pages;
+    }
+
+
     function nextPage() {
         const nextPage = currentPage + 1;
         setCurrentPage(nextPage);
@@ -35,6 +43,9 @@ const Pagination = ({ getProperties, totalPages }) => {
         getProperties(page);
         setCurrentPage(page);
     }
+
+    const pages = getPageRange();
+
     return (
         <Fragment>
             <div className="pagination">
@@ -42,14 +53,35 @@ const Pagination = ({ getProperties, totalPages }) => {
                     <li className={`pagination-item ${currentPage === 1 ? 'hidden' : ''}`}>
                         <button href="" onClick={previousPage} className="pagination-button">&laquo;</button>
                     </li>
+                    <li className={`pagination-item`}>
+                        <button href="" onClick={() => onClick(1)} className={`pagination-button ${currentPage === 1 ? 'active' : ''}`}>1</button>
+                    </li>
+                    {currentPage > 4 ? (
+                        <li className={`pagination-item`}>
+                            <span>...</span>
+                        </li>
+                    ) : (
+                        ''
+                    )}
                     {pages.map((page) => {
                         return (<li key={page} className="pagination-item">
                             <button onClick={() => { onClick(page) }} className={`pagination-button ${currentPage === page ? 'active' : ''}`}>{page}</button>
                         </li>)
                     })}
+                    {currentPage < (totalPages - 4) ? (
+                        <li className={`pagination-item`}>
+                            <span>...</span>
+                        </li>
+                    ) : (
+                        ''
+                    )}
+                    <li className={`pagination-item`}>
+                        <button href="" onClick={() => onClick(totalPages)} className={`pagination-button ${currentPage === totalPages ? 'active' : ''}`}>{totalPages}</button>
+                    </li>
                     <li className={`pagination-item ${currentPage === totalPages ? 'hidden' : ''}`}>
                         <button onClick={nextPage} className="pagination-button">&raquo;</button>
                     </li>
+
                 </ul>
             </div>
             <h5>Current page: {currentPage}</h5>

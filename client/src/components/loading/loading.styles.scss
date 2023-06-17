@@ -1,10 +1,3 @@
-.loading-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-}
-
 .loading {
     display: flex;
     align-items: center;
@@ -31,8 +24,22 @@
 
 .loading-text {
     margin-left: 10px;
-    font-size: 16px;
-    color: #555;
+    font-size: 30px;
+    color: #3a3a3a;
+}
+
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    height: 100vh;
 }
 
 
