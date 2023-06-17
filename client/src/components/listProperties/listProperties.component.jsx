@@ -10,13 +10,14 @@ const ListProperties = () => {
     const [properties, setProperties] = useState(null);
     const [totalPages, setTotalPages] = useState();
     const [loading, setLoading] = useState(false);
-
+    let tries = 0; //tries if fetch fails - max 10
     const getProperties = async (page = 1) => {
-        try {
 
+        try {
+            console.log("Tries:", tries);
             setLoading(true);
             console.log("Getproperties");
-            const response = await fetch(`http://localhost:5000/pagination?page=${page}`);
+            const response = await fetch(`http://localhost:5000/properties?page=${page}`);
             console.log();
             const responseJSON = await response.json();
             setProperties(responseJSON.data);
@@ -29,6 +30,10 @@ const ListProperties = () => {
 
         } catch (error) {
             console.log(error.message);
+            if (error.message === 'Failed to fetch' && tries < 10) { //10 tries to fetch
+                tries++;
+                setTimeout(getProperties, 1000); //after 1s wil ltry to fetch again
+            }
         }
     }
 

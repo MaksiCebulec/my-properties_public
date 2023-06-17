@@ -84,7 +84,7 @@ const Pagination = ({ getProperties, totalPages }) => {
 
                 </ul>
             </div>
-            <h5>Current page: {currentPage}</h5>
+            <h4>Showing {(currentPage * 20) - 19} - {currentPage * 20} of {totalPages * 20} properties.</h4>
         </Fragment >
 
     );

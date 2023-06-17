@@ -5,31 +5,31 @@ const pool = require('./db');
 
 ///middleware
 
-app.use(cors());
+app.use(cors()); //so you can use server and client on different ports
 app.use(express.json());
 
 
 //Routes
-//get all properties
+// get all properties
+// app.get("/test", async (req, res) => {
+//     try {
+//         const queryResult = await pool.query("SELECT * FROM properties");
+//         const properties = queryResult.rows;
+
+//         // const filteredProperties = properties.map((property) => {
+//         //     return {
+//         //         ...property,
+//         //         photos: property.photos.filter((photo) => photo !== "https://www.sreality.cz/img/camera.svg")
+//         //     };
+//         // });
+//         res.json(properties);
+//     } catch (err) {
+//         console.log(err.message);
+//     }
+// });
+
+
 app.get("/properties", async (req, res) => {
-    try {
-        const queryResult = await pool.query("SELECT * FROM properties");
-        const properties = queryResult.rows;
-
-        const filteredProperties = properties.map((property) => {
-            return {
-                ...property,
-                photos: property.photos.filter((photo) => photo !== "https://www.sreality.cz/img/camera.svg")
-            };
-        });
-        res.json(filteredProperties);
-    } catch (err) {
-        console.log(err.message);
-    }
-});
-
-
-app.get("/pagination", async (req, res) => {
     try {
 
         const { page } = req.query;
