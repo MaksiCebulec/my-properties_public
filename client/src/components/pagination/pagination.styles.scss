@@ -15,10 +15,6 @@
 .pagination-item {
     display: inline-block;
     margin: 0 5px;
-
-    &.hidden {
-        display: none;
-    }
 }
 
 .pagination-link {
@@ -29,16 +25,18 @@
     text-decoration: none;
     border-radius: 4px;
     font-size: 2rem;
+}
 
-    &:hover {
-        background-color: #ddd;
-    }
+.pagination-link:hover {
+    background-color: #ddd;
+}
+
+.pagination-link.active {
+    background-color: #007bff;
+    color: #fff;
+}
 
 
-    &.active {
-        background-color: #007bff;
-        color: #fff;
-    }
-
-
+.hidden {
+    display: none;
 }

@@ -27,33 +27,11 @@ const ListProperties = () => {
         getProperties();
     }, []);
 
-    useEffect(() => {
-        getProperties(undefined, currentLimit);
-    }, [currentLimit]);
-
-
-    function limitChange(e) {
-        const newLimit = e.target.value;
-        setCurrentLimit(newLimit);
-
-        getProperties(undefined, newLimit);
-
-    }
 
 
     return (
         <Fragment>
             <h1>My Properties</h1>
-
-            <div className="limit-chooser">
-                <label htmlFor="limit-select">Items per page:</label>
-                <select id="limit-select" onChange={limitChange}>
-                    <option value="5">5</option>
-                    <option value="10">10</option>
-                    <option value="20">20</option>
-                </select>
-            </div>
-
 
             <section className="properties">
                 {properties === null ? (
