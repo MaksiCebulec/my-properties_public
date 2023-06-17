@@ -1,7 +1,6 @@
 import React, { Fragment, useEffect, useState } from "react";
 import './listProperties.styles.scss';
 import Property from "../property/property.component";
-import Pagination from "../pagination/pagination.component";
 
 
 
@@ -9,20 +8,14 @@ const ListProperties = () => {
 
     const [properties, setProperties] = useState(null);
     const [totalPages, setTotalPages] = useState();
-    const [currentPage, setCurrentPage] = useState(1);
-    const [currentLimit, setCurrentLimit] = useState(5);
-    const [allProperties, setAllProperties] = useState();
-    const getProperties = async (page = 1, limit = currentLimit) => {
-        try {
 
-            console.log("page:", page);
-            console.log("limit", limit);
-            const response = await fetch(`http://localhost:5000/pagination?page=${page}&limit=${currentLimit}`);
+    const getProperties = async (page = 1) => {
+        try {
+            const response = await fetch(`http://localhost:5000/pagination?page=${page}`);
             console.log();
             const responseJSON = await response.json();
             setProperties(responseJSON.data);
-            setAllProperties(responseJSON.pagination.count);
-            setTotalPages(responseJSON.pagination.totalPages);
+            setTotalPages(responseJSON.pagination.totalPages)
             console.log(totalPages);
 
         } catch (error) {
@@ -72,7 +65,7 @@ const ListProperties = () => {
                 )}
             </section>
             <footer>
-                <Pagination getProperties={getProperties} totalPages={totalPages} currentPage={currentPage} setCurrentPage={setCurrentPage} />
+                <Pagination getProperties={getProperties} totalPages={totalPages} />
             </footer>
         </Fragment>
 

@@ -15,27 +15,20 @@ app.get("/properties", async (req, res) => {
     try {
         const queryResult = await pool.query("SELECT * FROM properties");
         const properties = queryResult.rows;
-        //deletes svg
+
         const filteredProperties = properties.map((property) => {
             return {
                 ...property,
                 photos: property.photos.filter((photo) => photo !== "https://www.sreality.cz/img/camera.svg")
             };
         });
-
-        const { page } = req.query;
-        const limit = 5;
-
-        const offset = (page - 1) * limit;
-
-
-
         res.json(filteredProperties);
     } catch (err) {
         console.log(err.message);
     }
 });
 
+<<<<<<< HEAD
 app.get("/pagination", async (req, res) => {
     try {
 
@@ -77,9 +70,11 @@ app.get("/pagination", async (req, res) => {
     }
 });
 
+=======
+>>>>>>> parent of befca18 (5th commit)
 
 
 
 app.listen(5000, () => {
-    console.log("Server has started (port 5000).");
+    console.log("Server has stated (port 5000).");
 });
