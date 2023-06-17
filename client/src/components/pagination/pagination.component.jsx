@@ -30,15 +30,15 @@ const Pagination = ({ getProperties, totalPages }) => {
             <div className="pagination">
                 <ul className="pagination-list">
                     <li className={`pagination-item ${currentPage === 1 ? 'hidden' : ''}`}>
-                        <a href="#" onClick={previousPage} className="pagination-link">&laquo;</a>
+                        <button href="" onClick={previousPage} className="pagination-button">&laquo;</button>
                     </li>
                     {pages.map((page) => {
                         return (<li key={page} className="pagination-item">
-                            <a href="#" onClick={() => { onClick(page) }} className={`pagination-link ${currentPage === page ? 'active' : ''}`}>{page}</a>
+                            <button onClick={() => { onClick(page) }} className={`pagination-button ${currentPage === page ? 'active' : ''}`}>{page}</button>
                         </li>)
                     })}
                     <li className={`pagination-item ${currentPage === totalPages ? 'hidden' : ''}`}>
-                        <a href="#" onClick={nextPage} className="pagination-link">&raquo;</a>
+                        <button onClick={nextPage} className="pagination-button">&raquo;</button>
                     </li>
                 </ul>
             </div>

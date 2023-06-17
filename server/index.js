@@ -28,7 +28,7 @@ app.get("/properties", async (req, res) => {
     }
 });
 
-<<<<<<< HEAD
+
 app.get("/pagination", async (req, res) => {
     try {
 
@@ -70,8 +70,6 @@ app.get("/pagination", async (req, res) => {
     }
 });
 
-=======
->>>>>>> parent of befca18 (5th commit)
 
 
 

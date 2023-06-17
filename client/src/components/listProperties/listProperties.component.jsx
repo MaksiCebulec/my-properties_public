@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect, useState } from "react";
 import './listProperties.styles.scss';
 import Property from "../property/property.component";
-
+import Pagination from "../pagination/pagination.component";
 
 
 const ListProperties = () => {
@@ -25,7 +25,8 @@ const ListProperties = () => {
 
     useEffect(() => {
         getProperties();
-    }, []);
+        console.log("Use effect");
+    }, []);// eslint-disable-line react-hooks/exhaustive-deps
 
 
 
