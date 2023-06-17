@@ -6,6 +6,16 @@ const Pagination = ({ getProperties, totalPages }) => {
 
     const [currentPage, setCurrentPage] = useState(1);
 
+
+    // function getPageRange() {
+    //     const minPage = currentPage - 5;
+
+    //     if(minPage<1){
+
+    //     }
+    //     const maxPage = currentPage + 5;
+    // }
+
     const pages = Array.from({ length: totalPages }, (_, index) => index + 1);
     function nextPage() {
         const nextPage = currentPage + 1;

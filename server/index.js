@@ -33,7 +33,7 @@ app.get("/pagination", async (req, res) => {
     try {
 
         const { page } = req.query;
-        const limit = 10;
+        const limit = 20;
 
         const offset = (page - 1) * limit;
         const queryResult = await pool.query("SELECT * FROM properties LIMIT $1 OFFSET $2", [limit, offset]);
