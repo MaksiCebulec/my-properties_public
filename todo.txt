@@ -9,7 +9,7 @@ Nice add ons:
     
 
 
-1. Design - styling
+1. Design - styling DONE
 2. Learn Docker
 If time:
 3. refresh goes back to first page (session storage)
