@@ -1,8 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Diphylleia&family=Oswald:wght@500&display=swap');
+
+
 .pagination {
     display: flex;
     justify-content: center;
     margin-top: 20px;
     margin-bottom: 20px;
+
+    font-family: Diphylleia, sans-serif;
+
 
 }
 
@@ -29,7 +35,8 @@
     color: #333;
     text-decoration: none;
     border-radius: 4px;
-    font-size: 2rem;
+    font-size: 1.3rem;
+    font-family: Oswald, sans-serif;
 }
 
 .pagination-button:hover {
@@ -38,10 +45,15 @@
 
 .pagination-button.active {
     background-color: #007bff;
+
     color: #fff;
 }
 
 
 .hidden {
     display: none;
+}
+
+h4 {
+    font-family: Diphylleia, sans-serif;
 }

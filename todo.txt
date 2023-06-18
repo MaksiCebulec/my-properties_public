@@ -1,6 +1,17 @@
 sometimes new items added to prelast page not last
 when just one page it shows 1 page 2-times in pagination
 refresh goes back to first page (session storage)
-scraper checks if same data is already there - no same properties in the database
+scraper checks if same data is already there - no same properties in the database 
 put code into functions, index - server, ...
 offset must no be negative
+
+Nice add ons:
+    1. add ad where is not a property and its empty
+
+
+1. Design - styling
+2. Learn Docker
+If time:
+3. refresh goes back to first page (session storage)
+4. put code into functions, index - server, ...
+

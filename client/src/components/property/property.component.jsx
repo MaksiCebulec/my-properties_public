@@ -22,20 +22,22 @@ const Property = ({ property }) => {
 
     return (
         <div className="property">
-            <div className="text">
-                <h4 className="title">{property.title}</h4>
-                <h6 className="location">{property.location}</h6>
-            </div>
             <div className="photos">
                 <img
                     src={property.photos[currentPhotoIndex]}
                     alt={`Image ${currentPhotoIndex + 1}`}
                 />
                 <div className="photo-buttons">
-                    <button onClick={handleClickPreviousPhoto}>Previous</button>
-                    <button onClick={handleClickNextPhoto}>Next</button>
+                    <button className='prev-button' onClick={handleClickPreviousPhoto}><span>&#8249;</span></button>
+                    <button className='next-button' onClick={handleClickNextPhoto}><span>&#8250;</span></button>
                 </div>
             </div>
+            <div className="text">
+                <h4 className="title">{property.title}</h4>
+                <h6 className="location">{property.location}</h6>
+            </div>
+
+
         </div>
     );
 }

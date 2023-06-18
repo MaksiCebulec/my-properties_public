@@ -1,26 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Diphylleia&family=Oswald:wght@500&display=swap');
+
+
+header {
+    // background-color: blue;
+    padding: 20px;
+    margin-bottom: 70px;
+
+    // border-bottom: 2px solid blue;
+
+
+    h1 {
+        font-size: 2.5rem;
+        font-family: Oswald, sans-serif;
+        color: #007bff;
+
+        svg {
+            margin-right: 7px;
+        }
+
+        margin-bottom: 50px;
+    }
+
+    hr {
+        width: 80%;
+        border: 1px solid #007bff;
+    }
+}
+
+
+
 .properties {
+
+
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-gap: 10px;
-    // grid-auto-flow: column;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 15px;
+
+    // background-color: aqua;
+    margin: 0 100px;
+
+
+
+
+
+    font-family: Diphylleia, sans-serif;
 
     .property {
         margin: 20px 0;
+        // background-color: aquamarine;
+        // border: 1px solid red;
+        // box-shadow: inset 0 0 4px blue;
+        box-shadow: 0 0 6px #007bff;
+        /* Add darker shadow to arrow */
+
+        transition: transform 0.25s;
+
+
+        border-radius: 5px;
 
         .text {
+            padding: 5px 10px 15px 10px;
+
             .title {
                 margin: 5px;
+                font-size: 1.3rem;
+
+
             }
 
             .location {
                 margin: 5px;
+                font-size: 0.95rem;
             }
         }
 
         .photos {
+            width: 100%;
+
+            position: relative;
+            display: inline-block;
+
+
+
             img {
-                height: 250px;
+                width: 100%;
+                border-radius: 5px 5px 0 0;
             }
+
+            .photo-buttons {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                opacity: 0;
+                transition: opacity 0.3s;
+
+            }
+
+            &:hover .photo-buttons {
+                opacity: 1;
+            }
+
+            .prev-button,
+            .next-button {
+                background-color: transparent;
+                border: none;
+                color: rgb(241, 241, 241);
+                font-size: 70px;
+                padding: 5px 10px;
+
+
+            }
+
+            .prev-button:hover,
+            .next-button:hover {
+                cursor: pointer;
+                // color: blue;
+                color: #007bff;
+            }
+
+
+        }
+
+        &:hover {
+            // box-shadow: 0 0 6px blue;
+            transform: scale(1.02);
         }
     }
 }
