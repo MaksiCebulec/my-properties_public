@@ -6,7 +6,7 @@ put code into functions, index - server, ...
 offset must no be negative
 
 Nice add ons:
-    1. add ad where is not a property and its empty
+    
 
 
 1. Design - styling

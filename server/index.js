@@ -51,8 +51,9 @@ app.get("/properties", async (req, res) => {
         // console.log(queryResult.rows);
         // const properties = queryResult.rows;
         const { rows } = await pool.query("SELECT COUNT(*) as count FROM properties");
+        const totalProperties = rows[0].count;
+        const totalPages = Math.ceil(totalProperties / limit);
 
-        const totalPages = Math.ceil(rows[0].count / limit);
         console.log(filteredProperties);
 
         // if (page > totalPages) {
@@ -68,7 +69,8 @@ app.get("/properties", async (req, res) => {
             pagination: {
                 page,
                 limit,
-                totalPages
+                totalPages,
+                totalProperties
 
             }
         });

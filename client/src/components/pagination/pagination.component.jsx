@@ -2,9 +2,9 @@ import React, { Fragment, useState } from "react";
 import './pagination.styles.scss';
 
 
-const Pagination = ({ getProperties, totalPages }) => {
+const Pagination = ({ setCurrentPage, currentPage, getProperties, totalPages, totalProperties }) => {
 
-    const [currentPage, setCurrentPage] = useState(1);
+
 
 
     function getPageRange() {
@@ -27,13 +27,13 @@ const Pagination = ({ getProperties, totalPages }) => {
 
     function nextPage() {
         const nextPage = currentPage + 1;
-        setCurrentPage(nextPage);
+        // setCurrentPage(nextPage);
         getProperties(nextPage);
     }
 
     function previousPage() {
         const nextPage = currentPage - 1;
-        setCurrentPage(nextPage);
+        // setCurrentPage(nextPage);
         getProperties(nextPage);
 
     }
@@ -41,7 +41,7 @@ const Pagination = ({ getProperties, totalPages }) => {
 
     function onClick(page) {
         getProperties(page);
-        setCurrentPage(page);
+        // setCurrentPage(page); //it already do this in getProperties
     }
 
     const pages = getPageRange();
@@ -84,7 +84,7 @@ const Pagination = ({ getProperties, totalPages }) => {
 
                 </ul>
             </div>
-            <h4>Showing {(currentPage * 20) - 19} - {currentPage * 20} of {totalPages * 20} properties.</h4>
+            <h4>Showing {(currentPage * 21) - 20} - {currentPage * 21} of {totalProperties} properties.</h4>
         </Fragment >
 
     );
