@@ -73,6 +73,18 @@ const Pagination = ({ setCurrentPage, currentPage, getProperties, totalPages, to
         setPageRange(getPageRange());
     }, [currentPage, totalPages]);
 
+    let startProperty = (currentPage - 1) * 21 + 1;
+    let endProperty = currentPage * 21;
+
+    if (endProperty > totalProperties) {
+        endProperty = totalProperties;
+    }
+
+    // Adjust startProperty if it exceeds totalProperties
+    if (startProperty > totalProperties) {
+        startProperty = totalProperties;
+    }
+
     // const pages = getPageRange();
 
     return (
@@ -123,7 +135,7 @@ const Pagination = ({ setCurrentPage, currentPage, getProperties, totalPages, to
                 </ul>
 
             </div>
-            <h4>Showing {(currentPage * 21) - 20} - {currentPage * 21} of {totalProperties} properties.</h4>
+            <h4>Showing {startProperty} - {endProperty} of {totalProperties} properties.</h4>
         </Fragment >
 
     );
