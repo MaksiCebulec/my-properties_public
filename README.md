@@ -1,0 +1,7 @@
+# my-properties_public
+
+
+TO RUN ALL AT ONCE RUN startup.sh
+
+1. GOT TO ROOT DIRECTORY OF PROJECT
+2. TYPE BASH startup.sh AND THE PROJECT SHOLD RUN.
